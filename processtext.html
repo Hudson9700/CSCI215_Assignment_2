@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>process text</title>
+    <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+<div id="input">
+    <label>Input sentence to be processed:</label><input type="text" name="processT"><br>
+    <input type="button" onclick="processText()" value="Process Text"><br>
+
+</div>
+
+<div id="output">
+    <script>
+        document.getElementsByName("processT")[0].value = text;
+        function processText(){
+            text.split(" ").forEach((word) => {
+                const numberOfOccurrences = text.match(new RegExp(word, "g")).length
+                console.log(`${word} - ${numberOfOccurrences}`)
+        })}
+    </script>
+
+</div>
+
+</body>
+</html>
