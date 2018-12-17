@@ -2,27 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>process text</title>
-    <link rel="stylesheet" href="presentation.css">
+    <title>ProcessText</title>
 </head>
 <body>
-<div id="input">
-    <label>Input sentence to be processed:</label><input type="text" name="processT"><br>
-    <input type="button" onclick="processText()" value="Process Text"><br>
 
-</div>
-
-<div id="output">
-    <script>
-        document.getElementsByName("processT")[0].value = text;
-        function processText(){
-            text.split(" ").forEach((word) => {
-                const numberOfOccurrences = text.match(new RegExp(word, "g")).length
-                console.log(`${word} - ${numberOfOccurrences}`)
-        })}
-    </script>
-
-</div>
+<div><input id="input"></div>
+<button onclick="processText()">Submit</button>
+<div id="output">Output Area</div>
 
 </body>
+    <script>
+        function processText() {
+            var words1 = document.getElementById("input").value.toUpperCase();
+            var output = "";
+            var words2 = words1.split(".").join("");
+            var words = words2.split(" ");
+            for (var x=0; x < words.length; x++){
+                var word = words[x];
+                var count = 0;
+                for (var z=0; z < words.length; z++){
+                    if (word === words[z] && !output.includes(word)){
+                        count++;
+                    }
+                }
+                if (!output.includes(word)){
+                    output = output + word + " " + count + " ";
+                }
+            }
+            document.getElementById("output").innerHTML = output;
+        }
+    </script>
 </html>
